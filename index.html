@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free coming soon template with jQuery countdown">
+
+  <title>Internet Radio - Free online radio with different stations </title>
+
+  <!-- Bootstrap -->
+  <link href="{{static_url("css/bootstrap.css")}}" rel="stylesheet">
+  <link href="{{static_url("css/bootstrap-theme.css")}}" rel="stylesheet">
+  <link href="{{static_url("css/font-awesome.css")}}" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  
+  <style>
+  .card{
+   background-color: rgba(245, 245, 245, 1);
+  opacity: .8;
+  }
+  .card:hover{
+  cursor:pointer;
+  }
+  </style>
+
+
+  <!-- siimple style -->
+  <link href="{{static_url("css/style.css")}}" rel="stylesheet">
+
+
+</head>
+
+<body body onload="startTime()">
+
+  <div id="wrapper">
+    <div class="container">
+	
+      <div class="row" align="center">
+        <div class="col-md-12">
+          <h1>Welcome to Internet Radio</h1>
+          <h2 class="subtitle">Hear songs of different stations from different region</h2>
+          <div id="countdown"></div>
+          
+		  <div id="1" class="card" style="width:400px" onclick="playlist(this.id)">
+		  <div align="center">
+		  <br>
+  <img  class="card-img-top" src="https://cdn-radiotime-logos.tunein.com/s2591d.png" style=" width:150px; height:150px;">
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">Groove Salad</h4>
+    <p class="card-text"> a nicely chilled plate of ambient beats and grooves. [SomaFM]: Future Former - Diversity</p>
+  </div>
+</div>
+<br>
+ <div id="2" class="card" style="width:400px" onclick="playlist(this.id)">
+ </br>
+  <img class="card-img-top" src="https://www.streamguys.com/storage/app/media/sgsite_logo.png" alt="Card image" style=" width:150px; height:150px;">
+  
+  <div class="card-body">
+    <h4 class="card-title">Live</h4>
+    <p class="card-text">Live from Washington</p>
+  </div>
+</div>
+
+</br>
+<div id="3" class="card" style="width:400px" onclick="playlist(this.id)">
+ </br>
+  <img class="card-img-top" src="https://media.glassdoor.com/sqll/956281/securenet-systems-squarelogo-1515605700675.png" alt="Card image" style=" width:150px; height:150px;">
+  
+  <div class="card-body">
+    <h4 class="card-title">Securenet Systems Cirrus</h4>
+    <p class="card-text">Washington Caps head coach Barry Trotz joins Nestor and Ed at Michael's Cafe in Timonium for some Stanley Cup chatter Part 1 </p>
+  </div>
+</div>
+  </br>
+<div id="4" class="card" style="width:400px" onclick="playlist(this.id)">
+ </br>
+  <img class="card-img-top" src="http://www.wpfwfm.org/radio/templates/wpfwtemplatefrontpage/images/wpfwLogo.png" alt="Card image" style=" width:150px; height:150px;">
+  
+  <div class="card-body">
+    <h4 class="card-title">WPFW Stereo Stream</h4>
+    <p class="card-text">WPFW Pacifica Washington, DC Stereo</p>
+  </div>
+</div>
+</br>
+<div id="5" class="card" style="width:400px" onclick="playlist(this.id)">
+ </br>
+  <img class="card-img-top" src="https://static-media.streema.com/media/cache/7a/ea/7aea5b4e9cb47839441ecc9c7212490f.jpg" style=" width:150px; height:150px;">
+  
+  <div class="card-body">
+    <h4 class="card-title">Radio La Jefa</h4>
+    <p class="card-text">Radio La Jefa.com: www.RadioLaJefa.com</p>
+  </div>
+</div>
+</br>
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div align>
+	  <div align=center class="social">
+            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+          </div>
+
+  </div>
+  
+  
+  <script type="text/javascript">
+  function playlist(clicked_id)
+{
+    $.post("/radio-stations/select/",{channel:clicked_id})
+}
+    function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('countdown').innerHTML =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+  </script>
+
+ 
+</body>
+
+</html>
